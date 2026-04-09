@@ -121,7 +121,13 @@ createToggle("Speed Boost", speedOn, function(v)
                         if speedOn then
                                     hum.WalkSpeed = speedValue
                                             else
-                                                        hum.WalkSpeed = 16
+                                                        if hum then
+                                                                if speedOn then
+                                                                        hum.WalkSpeed = speedValue
+                                                                            else
+                                                                                    hum.WalkSpeed = 16
+                                                                                        end
+                                                                                        end
                                                                 end
                                                                     end
                                                                     end)
