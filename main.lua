@@ -111,29 +111,46 @@ function createToggle(name, state, callback)
     end)
 end
 
+-- SPEED TOGGLE
 createToggle("Speed Boost", speedOn, function(v)
     speedOn = v
         Settings.Speed = v
-        
+
             local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
                 if hum then
-                        hum.WalkSpeed = v and speedValue or 16
-                            end
+                        if speedOn then
+                                    hum.WalkSpeed = speedValue
+                                            else
+                                                        hum.WalkSpeed = 16
+                                                                end
+                                                                    end
+                                                                    end)
 
-                                Save()
-                                end)
+ -- SPEED VALUE BUTTON
+ local speedValueBtn = Instance.new("TextButton", Scroll)
+ speedValueBtn.Size = UDim2.new(1,-10,0,40)
+ speedValueBtn.Text = "Speed: "..speedValue
+ speedValueBtn.BackgroundColor3 = Color3.fromRGB(20,40,20)
+ speedValueBtn.TextColor3 = Color3.fromRGB(0,255,0)
 
-createToggle("Speed Boost", speedOn, function(v)
-    speedOn = v
-        Settings.Speed = v
-        
-            local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
-                if hum then
-                        hum.WalkSpeed = v and speedValue or 16
-                            end
+ speedValueBtn.MouseButton1Click:Connect(function()
+     speedValue = speedValue + 10
+         if speedValue > 200 then
+                 speedValue = 10
+                     end
 
-                                Save()
-                                end)
+                         Settings.SpeedValue = speedValue
+                             speedValueBtn.Text = "Speed: "..speedValue
+
+                                 if speedOn then
+                                         local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+                                                 if hum then
+                                                             hum.WalkSpeed = speedValue
+                                                                     end
+                                                                         end
+
+                                                                             Save()
+                                                                             end)                                                                   
 
 -- TOGGLES
 createToggle("Zombie ESP", espOn, function(v) espOn=v Settings.ESP=v end)
