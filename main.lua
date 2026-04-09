@@ -111,16 +111,17 @@ function createToggle(name, state, callback)
     end)
 end
 
--- SPEED TOGGLE
 createToggle("Speed Boost", speedOn, function(v)
     speedOn = v
         Settings.Speed = v
-
+        
             local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
                 if hum then
                         hum.WalkSpeed = v and speedValue or 16
                             end
-                            end)
+
+                                Save()
+                                end)
 
 createToggle("Speed Boost", speedOn, function(v)
     speedOn = v
