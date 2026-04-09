@@ -112,6 +112,9 @@ function createToggle(name, state, callback)
 end
 
 -- SPEED TOGGLE
+local speedOn = false
+local speedValue = Settings.SpeedValue or 50
+
 createToggle("Speed Boost", speedOn, function(v)
     speedOn = v
         Settings.Speed = v
@@ -119,11 +122,12 @@ createToggle("Speed Boost", speedOn, function(v)
             local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
                 if hum then
                         if speedOn then
-                                    if hum then
-                                            if speedOn then
-                                                                    end
-                                                                    end
+                                    hum.WalkSpeed = speedValue
+                                            else
+                                                        hum.WalkSpeed = 16 -- default speed
                                                                 end
+                                                                    end
+                                                                    end)
 
                                                                         -- SPEED VALUE BUTTON
                                                                         local speedValueBtn = Instance.new("TextButton", Scroll)
