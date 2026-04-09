@@ -129,6 +129,13 @@ createToggle("Speed Boost", speedOn, function(v)
                                                                     end
                                                                     end)
 
+                                                                    player.CharacterAdded:Connect(function(char)
+                                                                        local hum = char:WaitForChild("Humanoid")
+                                                                            if speedOn then
+                                                                                    hum.WalkSpeed = speedValue
+                                                                                        end
+                                                                                        end)
+                                                                                        
                                                                         -- SPEED VALUE BUTTON
                                                                         local speedValueBtn = Instance.new("TextButton", Scroll)
                                                                         speedValueBtn.Size = UDim2.new(1,-10,0,40)
