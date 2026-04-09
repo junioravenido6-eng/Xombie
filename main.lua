@@ -111,23 +111,23 @@ function createToggle(name, state, callback)
     end)
 end
 
--- SPEED TOGGLE
-local speedOn = false
+-- SPEED VALUE (SLIDER)
 local speedValue = Settings.SpeedValue or 50
 
-createToggle("Speed Boost", speedOn, function(v)
-    speedOn = v
-        Settings.Speed = v
+CreateSlider("Speed Value", 1, 100, speedValue, function(v)
+    speedValue = v
+        Settings.SpeedValue = v
 
-            local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
-                if hum then
-                        if speedOn then
-                                    hum.WalkSpeed = speedValue
-                                            else
-                                                        hum.WalkSpeed = 16 -- default speed
-                                                                end
-                                                                    end
-                                                                    end)
+            local char = player.Character
+                if char then
+                        local hum = char:FindFirstChildOfClass("Humanoid")
+                                if hum and speedOn then
+                                            hum.WalkSpeed = speedValue
+                                                    end
+                                                        end
+
+                                                            Save()
+                                                            end)
 
                                                                     player.CharacterAdded:Connect(function(char)
                                                                         local hum = char:WaitForChild("Humanoid")
